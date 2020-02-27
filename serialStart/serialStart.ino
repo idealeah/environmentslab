@@ -21,5 +21,5 @@ void loop() {
   Serial.print(ledValue);
   Serial.print("\n");
   analogWrite(ledPin, ledValue);
-  
+  delay(100);
 }

@@ -54,19 +54,20 @@ function handleTurn(event) {
 function getWinner() {
     let winner = null;
 
-    for (i = 0; i < winningCombos.length; i++) {
+    for (let i = 0; i < winningCombos.length; i++) {
         let combo = winningCombos[i];
+
         if (board[combo[0]] && board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]) {
             winner = board[combo[0]]
         };
+    }
 
-        if (winner) {
-            return winner
-        } else if (board.includes('')) {
-            return null // if there's an empty space, no winners
-        } else {
-            return 'T' // no winner and no empty spaces? That's a tie!
-        }
+    if (winner) {
+        return winner
+    } else if (board.includes('')) {
+        return null // if there's an empty space, no winners
+    } else {
+        return 'T' // no winner and no empty spaces? That's a tie!
     }
 };
 
@@ -80,16 +81,16 @@ function begin() {
 };
 
 function render() {
-    for (i = 0; i < board.length; i++) {
+    for (let i = 0; i < board.length; i++) {
         let mark = board[i];
         squares[i].textContent = mark;
     }
     if (win === 'T') {
         messages.textContent = `That's a tie!`
     } else if (win) {
-        messages.textContent = `${win} wins!`
+        messages.textContent = win + ` wins!`
     } else {
-        messages.textContent = `It's ${turn}'s turn!`
+        messages.textContent = `It's ` + turn + `'s turn!`
     }
 }
 
